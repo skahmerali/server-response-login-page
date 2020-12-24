@@ -25,7 +25,7 @@ function signup() {
 console.log(user);
     const Http = new XMLHttpRequest();
     // const url = 'http://localhost:3000/signup';
-    const url = 'http://192.168.40.29:3000/signup';
+    const url = 'https://login-server-ahmer.herokuapp.com/signup';
 
     Http.open("POST", url);
     Http.setRequestHeader("Content-Type", "application/json");
@@ -91,7 +91,7 @@ function userLogin() {
 
 // console.log(Lemail)
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:3000/login';
+    const url = 'https://login-server-ahmer.herokuapp.com/login';
 
     Http.open("POST", url);
     Http.setRequestHeader("Content-Type", "application/json");
