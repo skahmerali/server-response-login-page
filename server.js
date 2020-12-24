@@ -8,7 +8,7 @@ var users = [
 var express = require("express");
 var cors = require('cors')
 var morgan = require('morgan')
-const PORT = process.env.PORT || 5000
+// const PORT = process.env.PORT || 5000
 var bodyParser = require('body-parser')
 var app = express();
 
@@ -18,6 +18,10 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())  
 
 
-app.get("/", (req,res,next)     =>{
-    
+app.get("/", (req,res,next)     => {
+     res.send("server is running")
+})
+
+app.listen(3000,()=>{
+    console.log("server is running")
 })

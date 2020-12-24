@@ -5,7 +5,7 @@
 
 
 // ]
-var isFound = false;
+// var isFound = false;
 function signup() {
     let name = document.getElementById("signup-name").value;
     let email = document.getElementById("signup-email").value;
@@ -17,22 +17,26 @@ function signup() {
 
     email = email.toLowerCase();
 
-    user({ userName: name, userEmail: email, userPassword: password });
+    var user={ userName: name, userEmail: email, userPassword: password };
     document.getElementById("signup-name").value = "";
     document.getElementById("signup-email").value = "";
     document.getElementById("signup-password").value = "";
 
 
     const Http = new XMLHttpRequest();
-    const url = 'https://localhost:3000/signup';
+    const url = 'http://localhost:3000/signup';
     Http.open("POST", url);
     Http.setRequestHeader("Content-Type", "application/json");
     Http.send(JSON.stringify(user));
 
-    Http.onreadystatechange = (e) => {
+    Http.onreadystatechange = () => {
         // console.log(Http.responseText)
         document.getElementById('res').innerHTML = Http.responseText;
     }
+    return false;
+    
+
+    
 
     // for(i=0; i<users.length;i++){
     //     if(users[i]===email){
@@ -54,7 +58,6 @@ function signup() {
     // });
     // localStorage.setItem("userData", JSON.stringify(users));
     // window.location.href = "index.html";
-    return false;
 }
 // }
 // }
@@ -66,45 +69,58 @@ function signup() {
 // var getUser = JSON.parse(localStorage.getItem('userData'))
 
 
-function login() {
-    let Lemail = document.getElementById("login-email").value;
-    let Lpassword = document.getElementById("login-password").value;
 
 
-    const Http = new XMLHttpRequest();
-    const url = 'https://localhost:3000/login';
-
-    Http.open("POST", url);
-    Http.setRequestHeader("Content-Type", "application/json");
-    Http.send(JSON.stringify({ email: uEmail, pass: uPassword }));
-
-    document.getElementById('login-email').value = ""
-    document.getElementById('login-password').value = ""
-
-    Http.onreadystatechange = (e) => {
-        // console.log(Http.responseText)
-        document.getElementById('result').innerHTML = Http.responseText;
-    }
-    // for (i = 0; i < getUser.length; i++) {
-
-    //     if ((getUser[i].email === Lemail) && (getUser[i].password === Lpassword)) {
 
 
-    //         window.location.href = "home.html"
-    //     }
-    //     else {
-    //         alert("INVALID EMAIL OR PASSWORD");
-    //     }
-    // }
-    return false;
-}
 
-var getUser = JSON.parse(localStorage.getItem('userData'))
-document.getElementById("print-username").value = getUser[0].name;
-document.getElementById("print-email").value = getUser[0].email;
-document.getElementById("print-password").value = getUser[0].password;
-document.getElementById("print-re-password").value = getUser[0].confirmPassword;
-document.getElementById("print-date_birth").value = getUser[0].birthDate;
-document.getElementById("print-address").value = getUser[0].address;
-document.getElementById("print-number").value = getUser[0].gender;
-console.log(getUser);
+
+
+
+
+
+
+
+
+// function login() {
+//     let Lemail = document.getElementById("login-email").value;
+//     let Lpassword = document.getElementById("login-password").value;
+
+
+//     const Http = new XMLHttpRequest();
+//     const url = 'https://localhost:3000/login';
+
+//     Http.open("POST", url);
+//     Http.setRequestHeader("Content-Type", "application/json");
+//     Http.send(JSON.stringify({ email: uEmail, pass: uPassword }));
+
+//     document.getElementById('login-email').value = ""
+//     document.getElementById('login-password').value = ""
+
+//     Http.onreadystatechange = (e) => {
+//         // console.log(Http.responseText)
+//         document.getElementById('result').innerHTML = Http.responseText;
+//     }
+//     // for (i = 0; i < getUser.length; i++) {
+
+//     //     if ((getUser[i].email === Lemail) && (getUser[i].password === Lpassword)) {
+
+
+//     //         window.location.href = "home.html"
+//     //     }
+//     //     else {
+//     //         alert("INVALID EMAIL OR PASSWORD");
+//     //     }
+//     // }
+//     return false;
+// }
+
+// var getUser = JSON.parse(localStorage.getItem('userData'))
+// document.getElementById("print-username").value = getUser[0].name;
+// document.getElementById("print-email").value = getUser[0].email;
+// document.getElementById("print-password").value = getUser[0].password;
+// document.getElementById("print-re-password").value = getUser[0].confirmPassword;
+// document.getElementById("print-date_birth").value = getUser[0].birthDate;
+// document.getElementById("print-address").value = getUser[0].address;
+// document.getElementById("print-number").value = getUser[0].gender;
+// console.log(getUser);
