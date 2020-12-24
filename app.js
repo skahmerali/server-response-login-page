@@ -10,10 +10,10 @@ function signup() {
     let name = document.getElementById("signup-name").value;
     let email = document.getElementById("signup-email").value;
     let password = document.getElementById("signup-password").value;
-    let rePassword = document.getElementById("signup-re-password").value;
-    let Dbirth = document.getElementById("signup-date_birth").value;
-    let address = document.getElementById("signup-address").value;
-    let gender = document.getElementById("gender").value;
+    // let rePassword = document.getElementById("signup-re-password").value;
+    // let Dbirth = document.getElementById("signup-date_birth").value;
+    // let address = document.getElementById("signup-address").value;
+    // let gender = document.getElementById("gender").value;
 
     email = email.toLowerCase();
 
@@ -22,16 +22,19 @@ function signup() {
     document.getElementById("signup-email").value = "";
     document.getElementById("signup-password").value = "";
 
-
+console.log(user);
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:3000/signup';
+    // const url = 'http://localhost:3000/signup';
+    const url = 'http://192.168.40.29:3000/signup';
+
     Http.open("POST", url);
     Http.setRequestHeader("Content-Type", "application/json");
     Http.send(JSON.stringify(user));
 
-    Http.onreadystatechange = () => {
-        // console.log(Http.responseText)
+    Http.onreadystatechange = (e) => {
+        console.log(Http.responseText)
         document.getElementById('res').innerHTML = Http.responseText;
+        // alert(Http.responseText)
     }
     return false;
     
@@ -82,38 +85,38 @@ function signup() {
 
 
 
-// function login() {
-//     let Lemail = document.getElementById("login-email").value;
-//     let Lpassword = document.getElementById("login-password").value;
+function userLogin() {
+    let Lemail = document.getElementById("login-email").value;
+    let Lpassword = document.getElementById("login-password").value;
+
+// console.log(Lemail)
+    const Http = new XMLHttpRequest();
+    const url = 'http://localhost:3000/login';
+
+    Http.open("POST", url);
+    Http.setRequestHeader("Content-Type", "application/json");
+    Http.send(JSON.stringify({ email: Lemail, pass: Lpassword }));
+
+    document.getElementById('login-email').value = ""
+    document.getElementById('login-password').value = ""
+
+    Http.onreadystatechange = (e) => {
+        console.log(Http.responseText)
+        document.getElementById('result').innerHTML = Http.responseText;
+    }
+    // for (i = 0; i < getUser.length; i++) {
+
+    //     if ((getUser[i].email === Lemail) && (getUser[i].password === Lpassword)) {
 
 
-//     const Http = new XMLHttpRequest();
-//     const url = 'https://localhost:3000/login';
-
-//     Http.open("POST", url);
-//     Http.setRequestHeader("Content-Type", "application/json");
-//     Http.send(JSON.stringify({ email: uEmail, pass: uPassword }));
-
-//     document.getElementById('login-email').value = ""
-//     document.getElementById('login-password').value = ""
-
-//     Http.onreadystatechange = (e) => {
-//         // console.log(Http.responseText)
-//         document.getElementById('result').innerHTML = Http.responseText;
-//     }
-//     // for (i = 0; i < getUser.length; i++) {
-
-//     //     if ((getUser[i].email === Lemail) && (getUser[i].password === Lpassword)) {
-
-
-//     //         window.location.href = "home.html"
-//     //     }
-//     //     else {
-//     //         alert("INVALID EMAIL OR PASSWORD");
-//     //     }
-//     // }
-//     return false;
-// }
+    //         window.location.href = "home.html"
+    //     }
+    //     else {
+    //         alert("INVALID EMAIL OR PASSWORD");
+    //     }
+    // }
+    return false;
+}
 
 // var getUser = JSON.parse(localStorage.getItem('userData'))
 // document.getElementById("print-username").value = getUser[0].name;
